@@ -1,0 +1,53 @@
+# Codecov Configuration
+# Documentation: https://docs.codecov.com/docs/codecov-yaml
+
+coverage:
+  status:
+    project:
+      default:
+        target: 80%
+        threshold: 2%
+        base: auto
+        if_ci_failed: error
+
+    patch:
+      default:
+        target: 80%
+        threshold: 5%
+        base: auto
+
+  precision: 2
+  round: down
+  range: "70...100"
+
+parsers:
+  gcov:
+    branch_detection:
+      conditional: yes
+      loop: yes
+      method: no
+      macro: no
+
+comment:
+  layout: "reach,diff,flags,tree,footer"
+  behavior: default
+  require_changes: false
+  require_base: no
+  require_head: yes
+
+ignore:
+  - "tests/"
+  - "**/__pycache__"
+  - "**/venv"
+  - "**/env"
+  - "setup.py"
+  - "**/conftest.py"
+
+flags:
+  unittests:
+    carryforward: true
+    paths:
+      - app/
+
+github_checks:
+  annotations: true
