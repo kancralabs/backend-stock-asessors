@@ -4,9 +4,11 @@ from contextlib import asynccontextmanager
 
 from app.core.config import settings
 from app.api.endpoints import health
-from app.db.session import engine
-from app.db.base import Base
 from app.core.redis import cache
+
+# Uncomment when needed for database migrations
+# from app.db.session import engine
+# from app.db.base import Base
 
 
 @asynccontextmanager
