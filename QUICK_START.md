@@ -29,8 +29,8 @@ curl http://localhost:8000/api/v1/health
 python -m venv venv
 source venv/bin/activate  # Windows: venv\Scripts\activate
 
-# 2. Install dependencies
-make install
+# 2. Install dependencies + pre-commit hooks
+make setup
 
 # 3. Setup environment
 cp .env.example .env
@@ -65,9 +65,27 @@ make format
 # Run linting
 make lint
 
+# Run pre-commit hooks
+make precommit
+
 # Clean cache
 make clean
 ```
+
+## 🪝 Pre-commit Hooks
+
+```bash
+# Install pre-commit hooks (included in make setup)
+pre-commit install
+
+# Run manually
+pre-commit run --all-files
+
+# Update hooks
+pre-commit autoupdate
+```
+
+See [PRE_COMMIT_SETUP.md](PRE_COMMIT_SETUP.md) for detailed guide.
 
 ## 🔍 Useful Commands
 
