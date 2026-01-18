@@ -17,7 +17,9 @@ async def lifespan(app: FastAPI):
     # Startup
     print("🚀 Starting up Stock Assessor Backend...")
     print(f"📝 Environment: {settings.ENVIRONMENT}")
-    print(f"🗄️  Database: {settings.DATABASE_URL.split('@')[-1] if '@' in settings.DATABASE_URL else 'configured'}")
+    print(
+        f"🗄️  Database: {settings.DATABASE_URL.split('@')[-1] if '@' in settings.DATABASE_URL else 'configured'}"
+    )
 
     # Connect to Redis
     try:
@@ -41,7 +43,7 @@ app = FastAPI(
     version=settings.VERSION,
     description="Stock Assessment & Analysis Backend - Deterministic, Fast, Scalable",
     openapi_url=f"{settings.API_V1_STR}/openapi.json",
-    lifespan=lifespan
+    lifespan=lifespan,
 )
 
 # CORS configuration
@@ -65,5 +67,5 @@ async def root():
     return {
         "message": "Stock Assessor Backend API",
         "version": settings.VERSION,
-        "docs": f"{settings.API_V1_STR}/docs"
+        "docs": f"{settings.API_V1_STR}/docs",
     }

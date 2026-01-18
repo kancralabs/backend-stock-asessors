@@ -9,18 +9,11 @@ router = APIRouter()
 
 
 @router.get("/health")
-async def health_check(
-    db: AsyncSession = Depends(get_db),
-    cache: RedisCache = Depends(get_cache)
-):
+async def health_check(db: AsyncSession = Depends(get_db), cache: RedisCache = Depends(get_cache)):
     """
     Health check endpoint - checks database and Redis connectivity
     """
-    health_status = {
-        "status": "healthy",
-        "database": "disconnected",
-        "redis": "disconnected"
-    }
+    health_status = {"status": "healthy", "database": "disconnected", "redis": "disconnected"}
 
     # Check database
     try:

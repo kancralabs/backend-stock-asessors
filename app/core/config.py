@@ -7,6 +7,7 @@ class Settings(BaseSettings):
     """
     Application settings and configuration
     """
+
     # API Settings
     PROJECT_NAME: str = "Stock Assessor API"
     VERSION: str = "1.0.0"

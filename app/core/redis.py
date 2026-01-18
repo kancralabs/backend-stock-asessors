@@ -57,11 +57,7 @@ class RedisCache:
             return False
 
         ttl = ttl or settings.REDIS_CACHE_TTL
-        await self.redis.setex(
-            key,
-            ttl,
-            json.dumps(value, default=str)
-        )
+        await self.redis.setex(key, ttl, json.dumps(value, default=str))
         return True
 
     async def delete(self, key: str) -> bool:
